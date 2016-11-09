@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script src="https://code.jquery.com/jquery-2.2.0.js"></script>
 </head>
 <body>
 	<div class="content">
@@ -17,25 +18,40 @@
 			<div class="row">
 				<div class="col-md-2">
 				</div>
-				<section class= "col-md-8">
+				<section class= "col-md-8 mainsection">
 					<div class="row">
 						<div class="col-md-12">
-							<p>timer</p>
+							<h3> Timer </h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12" id = "timer">
+							
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<p>question</p>
+							<h3> Question </h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12" id = "question">
+							
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<p>answers</p>
+							<h3> Possible Answers </h3>
 						</div>
 					</div>
 					<div class="row">
+						<div class="col-md-12" id = "answers">
+							
+						</div>
+					</div>		
+					<div class="row">
 						<div class="col-md-12">
-							<button class="btn btn-primary"> Submit</button>
+							<button class="btn btn-primary" id = "start"> Submit</button>
 						</div>
 					</div>
 				</section>
@@ -44,10 +60,13 @@
 			</div>
 		</div>
 	</div>
-	<footer class="row">
-		<div class="col-md-12">
-			<p> &copy;: Tasha Casagni </p>
-		</div>
-	</footer>
+	<div class="container-fluid">
+		<footer class="row">
+			<div class="col-md-12">
+				<p> &copy;: Tasha Casagni </p>
+			</div>
+		</footer>
+		<script type="text/javascript" src = assets/javascript/game.js></script>
+	</div>
 </body>
 </html>
