@@ -1,15 +1,21 @@
-// global variables 
+// global variables //----------------fix these to be in quotes------------//
 var questions = {
-	q1 : [ "what color is purple","orange", "green", "purple", "pink" ],
-	q2 : ["what is your favorite thing", "peaches", "plums", "oranges", "apricots"],
-	q3 : ["what is your favorite dog", "cat", "dog"]
+	"q1" : [ "what color is purple","orange", "green", "purple", "pink" ],
+	"q2" : ["what is your favorite thing", "peaches", "plums", "oranges", "apricots"],
+	"q3" : ["what is your favorite dog", "cat", "dog"]
 }
 
 var correctAnswer = {
-	q1 : "orange",
-	q2 : "peaches",
-	q3 : "cat"
+	"q1" : "orange",
+	"q2" : "peaches",
+	"q3" : "cat"
 
+}
+
+var correspondingImages = {
+	"q1" : "../images/",
+	"q2" : "../images/",
+	"q3" : "../images/"
 }
 
 var timer;
@@ -53,6 +59,16 @@ $(document).ready(function(){
 		timerInit();
 		intervalInit();
 	}
+
+	function cutScene(){
+
+		 //after question ends update section for few minutes then re-init
+		 $("#answers").html("hi");
+		 clearInterval(interval);
+		 clearTimeout(timer);
+		 setTimeout(nextQuesiton, 3000);
+	}
+
 	//loads next quetion and resets 
 	function nextQuesiton(){
 		questionAnswered++;
@@ -107,18 +123,14 @@ $(document).ready(function(){
 	
 	//when player chooses question
 	$("section").on("click", ".choices" ,function(){
-		nextQuesiton();
-		console.log(this);
+		// nextQuesiton();
+		//console.log(this);
 		 var userChoice = $(this).text();
-		 console.log(userChoice);
-		 var questionAnswerIs = correctAnswer["q" + (questionAnswered-1)];
-		 console.log(questionAnswerIs);
-		 //after question ends update section for few minutes then re-init
-		 $("#answers").html("hi");
-		 clearInterval(interval);
-		 setTimeout(nextQuesiton, 10000);
-		 
-
+		// console.log(userChoice);
+		 var questionAnswerIs = correctAnswer["q" + (questionAnswered)];
+		 //console.log(questionAnswerIs);
+		 //cuts to show answer before running next question
+		 cutScene();
 		 if(userChoice === questionAnswerIs) {
 		 	answersCorrect++;
 		 	console.log("answersCorrect " + answersCorrect)
@@ -134,8 +146,8 @@ $(document).ready(function(){
 
 	function timeUp(){
 		answersBlank++;
-		nextQuesiton();
-		
+		//nextQuesiton();
+		cutScene();
 	}
 
 	
