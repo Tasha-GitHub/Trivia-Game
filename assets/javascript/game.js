@@ -6,9 +6,9 @@ var questions = {
 }
 
 var correctAnswer = {
-	q1 : "a1",
-	q2 : "a2",
-	q3 : "a3"
+	q1 : "orange",
+	q2 : "peaches",
+	q3 : "cat"
 
 }
 
@@ -109,6 +109,24 @@ $(document).ready(function(){
 	$("section").on("click", ".choices" ,function(){
 		nextQuesiton();
 		console.log(this);
+		 var userChoice = $(this).text();
+		 console.log(userChoice);
+		 var questionAnswerIs = correctAnswer["q" + (questionAnswered-1)];
+		 console.log(questionAnswerIs);
+		 //after question ends update section for few minutes then re-init
+		 $("#answers").html("hi");
+		 clearInterval(interval);
+		 setTimeout(nextQuesiton, 10000);
+		 
+
+		 if(userChoice === questionAnswerIs) {
+		 	answersCorrect++;
+		 	console.log("answersCorrect " + answersCorrect)
+
+		 } else {
+		 	answersWrong++;
+		 	console.log("answers wrong "+ answersWrong)
+		 }
 
 	
 		

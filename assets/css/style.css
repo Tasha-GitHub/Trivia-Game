@@ -7,7 +7,10 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: green;
+  background-image: url(../images/backgroud.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 
 }
 
@@ -25,12 +28,26 @@ body {
 /*---------------*/
 
 .mainsection{
-	background-color: blue;
+	background-color: #0366D4;
 	padding: 20px;
+	min-height: 400px;
+	min-width: 500px;
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+
+
 }
 
 h1{
 	text-align: center;
+	color: white;
+	font-size: 50px;
+	background-color: gray;
+	border-width: 2px;
+	border-style: solid;
 }
 
 #answers, #question, #timer {
