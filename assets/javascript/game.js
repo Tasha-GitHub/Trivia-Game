@@ -58,7 +58,7 @@ $(document).ready(function(){
 		$("#timer").append("Time Remaining: " + timeToAnswer + " seconds left");
 		//pull first question
 		$("#question").append(questions.q1[0]);
-		
+		$("#answers").css({"width": "250px", "position": "absolute", "top": "50%", "left": "50%", "margin-right": "-50%", "transform": "translate(-50%, -50%)"});
 		//generate a list of possible answers for first question
 		for(var i = 1; i < questions.q1.length; i++) {
 		$("#answers").append("<div class=\"choices\">"+questions.q1[i]+"</div>");
@@ -78,8 +78,9 @@ $(document).ready(function(){
 		$("#timer").hide();
 		$("#question").hide();
 		$(".headerSection").hide();
-		$("#imagesDiv").html("<img src = \""+ correspondingImages["q" + (questionAnswered)] + "\">" )
+		$("#imagesDiv").html("<img src = \""+ correspondingImages["q" + (questionAnswered)] + "\">" );
 		$("#imagesDiv").show();
+		$("#answers").css({"width": "250px", "position": "absolute", "top": "20%", "left": "50%", "margin-right": "-50%", "transform": "translate(-50%, -50%)"});
 		setTimeout(nextQuesiton, 3000);
 	}
 
@@ -103,7 +104,7 @@ $(document).ready(function(){
 			$("#question").html(questions["q" + questionAnswered][0]);
 			//clears out old answers
 			$("#answers").empty();
-			
+			$("#answers").css({"width": "250px", "position": "absolute", "top": "50%", "left": "50%", "margin-right": "-50%", "transform": "translate(-50%, -50%)"});
 			//generate a list of possible answers for first question
 			for(var i = 1; i < questions["q" + questionAnswered].length; i++) {
 			$("#answers").append("<div class = \"choices\">"+questions["q" + questionAnswered][i]+"</div>");
@@ -153,12 +154,12 @@ $(document).ready(function(){
 		 //cuts to show answer before running next question
 		 if(userChoice === questionAnswerIs) {
 		 	answersCorrect++;
-		 	console.log("answersCorrect " + answersCorrect)
+		 	console.log("answersCorrect " + answersCorrect);
 		 	isRight = "Correct!"
 
 		 } else {
 		 	answersWrong++;
-		 	console.log("answers wrong "+ answersWrong)
+		 	console.log("answers wrong "+ answersWrong);
 		 	isRight = "Wrong!"
 		 }
 		 cutScene();
