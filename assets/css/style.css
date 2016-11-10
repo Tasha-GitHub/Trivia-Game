@@ -40,8 +40,8 @@ body {
 .mainsection{
 	background-color: #012340;
 	padding: 70px;
-	min-height: 400px;
-	min-width: 500px;
+	height: 400px;
+	width: 900px;
 	position: absolute;
   top: 50%;
   left: 50%;
@@ -54,7 +54,22 @@ body {
   border-width: 3px;
   color: white;
 
+}
 
+
+.row{
+  margin: 0px;
+  padding: 0px;
+}
+
+.container-fluid{
+  margin: 0px;
+  padding: 0px;
+}
+
+.title{
+  margin: 0px;
+  padding: 0px;
 }
 
 /*--------Button Styling and Centering----------*/
@@ -80,11 +95,6 @@ button {
   border-radius: 3px !important;
 
 
-}
-
-
-button : hover {
-  background-color: #03658C !important;
 }
 
 /*--------Image Styling and Centering----------------*/
@@ -115,18 +125,18 @@ h1{
 	font-size: 50px;
 	background-color: #012340;
 	border-width: 2px;
-	border-style: solid;
+	border-style: solid none solid none;
 	padding: 10px;
   font-family: 'Diplomata SC', cursive;
   margin-top: 40px;
+  
 }
 
 p {
   color:white;
+  text-align: center;
 
 }
-
-
 
 
 
