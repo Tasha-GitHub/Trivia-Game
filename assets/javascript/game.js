@@ -1,21 +1,21 @@
 // global variables //----------------fix these to be in quotes------------//
 var questions = {
-	"q1" : [ "what color is purple","orange", "green", "purple", "pink" ],
-	"q2" : ["what is your favorite thing", "peaches", "plums", "oranges", "apricots"],
-	"q3" : ["what is your favorite dog", "cat", "dog"]
+	"q1" : [ "What is the state capital of Alabama?","Montgomery", "Birmingham", "purple", "pink" ],
+	"q2" : ["What is the state capital of Alaska", "Juneau", "Anchorage", "oranges", "apricots"],
+	"q3" : ["What is the state capital of Arizona", "Phoenix", "dog"]
 }
 
 var correctAnswer = {
-	"q1" : "orange",
-	"q2" : "peaches",
-	"q3" : "cat"
+	"q1" : "Montgomery",
+	"q2" : "Juneau",
+	"q3" : "Phoenix"
 
 }
 
 var correspondingImages = {
-	"q1" : "../images/",
-	"q2" : "../images/",
-	"q3" : "../images/"
+	"q1" : "../images/alabama.jpg",
+	"q2" : "../images/alaska.png",
+	"q3" : "../images/arizona.png"
 }
 
 var timer;
@@ -26,13 +26,14 @@ var questionAnswered =1;
 var answersCorrect = 0;
 var answersWrong = 0;
 var answersBlank = 0;
+var isRight;
 
 
 $(document).ready(function(){
 	//counts down the timer on UI
 	function decrement(){
 		counter--;
-		$("#timer").html(counter + " seconds left");
+		$("#timer").html("Time Remaining: " + counter + " seconds left");
 
 	}
 	//initializes the timer and starts count 
@@ -48,7 +49,7 @@ $(document).ready(function(){
 	//initalize game 
 	function gameInit(){
 		//set up timer view
-		$("#timer").append( timeToAnswer + " seconds left");
+		$("#timer").append("Time Remaining: " + timeToAnswer + " seconds left");
 		//pull first question
 		$("#question").append(questions.q1[0]);
 		
@@ -62,11 +63,18 @@ $(document).ready(function(){
 
 	function cutScene(){
 
-		 //after question ends update section for few minutes then re-init
-		 $("#answers").html("hi");
-		 clearInterval(interval);
-		 clearTimeout(timer);
-		 setTimeout(nextQuesiton, 3000);
+		//after question ends update section for few minutes then re-init
+		$("#answers").css("border-style", "none");
+		$("#answers").html("<div>" + isRight + "</div>" + "The Correct Answer is " + correctAnswer["q" + (questionAnswered)]);
+		var imageHTML = $("<div class = \"image\" + <img src =" + correspondingImages["q" + (questionAnswered)]+"> </div>");
+		imageHTML.appendTo("#answers");
+		clearInterval(interval);
+		clearTimeout(timer);
+		//hide all other components
+		$("#timer").hide();
+		$("#question").hide();
+		$(".headerSection").hide();
+		setTimeout(nextQuesiton, 10000);
 	}
 
 	//loads next quetion and resets 
@@ -76,10 +84,14 @@ $(document).ready(function(){
 		// if there are no more questions left end game and give score
 		if(questionAnswered > Object.keys(questions).length /*length of object*/){
 			gameOver();
-			clearInterval(interval);
 		} else{
 			//restart timer and ask next question
 			//move to next question
+			//show old hidden components
+			$("#timer").show();
+			$("#answers").show();
+			$("#question").show();
+			$(".headerSection").show();
 			console.log(questionAnswered);
 			$("#question").html(questions["q" + questionAnswered][0]);
 			//clears out old answers
@@ -93,7 +105,7 @@ $(document).ready(function(){
 			//clear countdown and restart
 			clearInterval(interval);
 			counter = timeToAnswer;
-			$("#timer").html(timeToAnswer + " seconds left");
+			$("#timer").html("Time Remaining: " + timeToAnswer + " seconds left");
 			intervalInit();
 			timerInit();
 			
@@ -105,10 +117,14 @@ $(document).ready(function(){
 	function gameOver(){
 		clearInterval(interval);
 		clearTimeout(timer);
-		$(".mainsection").empty();
-		$(".mainsection").append("<div> Questions Correct " + answersCorrect + "</div");
-		$(".mainsection").append("<div> Questions Incorrect " + answersWrong + "</div");
-		$(".mainsection").append("<div> Questions Blank " + answersBlank + "</div");
+		$("#timer").hide();
+		$("#answers").hide();
+		$("#question").hide();
+		$(".headerSection").hide();
+		$(".mainsection").append("<div class = \"results\"> Questions Correct " + answersCorrect + "</div");
+		$(".mainsection").append("<div class = \"results\"> Questions Incorrect " + answersWrong + "</div");
+		$(".mainsection").append("<div class = \"results\"> Questions Blank " + answersBlank + "</div");
+		$(".mainsection").append("<div class = \"results\"> <button class =\"startOver btn btn-primary\"> Start Over </button> </div>");
 	}
 
 	// game starts when start button is pushed
@@ -123,35 +139,65 @@ $(document).ready(function(){
 	
 	//when player chooses question
 	$("section").on("click", ".choices" ,function(){
-		// nextQuesiton();
-		//console.log(this);
 		 var userChoice = $(this).text();
 		// console.log(userChoice);
 		 var questionAnswerIs = correctAnswer["q" + (questionAnswered)];
-		 //console.log(questionAnswerIs);
 		 //cuts to show answer before running next question
-		 cutScene();
 		 if(userChoice === questionAnswerIs) {
 		 	answersCorrect++;
 		 	console.log("answersCorrect " + answersCorrect)
+		 	isRight = "Correct!"
 
 		 } else {
 		 	answersWrong++;
 		 	console.log("answers wrong "+ answersWrong)
+		 	isRight = "Wrong!"
 		 }
+		 cutScene();
+	});
 
-	
+	//when player hovers over a question
+	$("section").on("mouseenter", ".choices" ,function(){
+		$(this).css("color","red");
+	});
+	//when hover stops
+	$("section").on("mouseleave", ".choices" ,function(){
+		$(this).css("color","black");
+	});
+
+	//when player clicks on start over button
+	$("section").on("click", ".startOver" ,function(){
+		//unhides elements
+		$("#timer").show();
+		$("#answers").show();
+		$("#question").show();
+		$(".headerSection").show();
+		//resets all variables 
+		questionAnswered = 1;
+		answersCorrect = 0;
+		answersWrong = 0;
+		answersBlank = 0;
+		counter = timeToAnswer;
+		//clears out old answers
+		$("#question").empty();
+		$("#timer").empty();
+		$("#answers").empty();
+		$(".results").empty();
+		//initalizes game
+		gameInit();
+
 		
+
 	});
 
 	function timeUp(){
 		answersBlank++;
-		//nextQuesiton();
+		isRight = "Time Up!"
 		cutScene();
 	}
 
-	
-	
+
+
 
 
 });
