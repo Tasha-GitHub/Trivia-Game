@@ -29,7 +29,7 @@ body {
 
 .mainsection{
 	background-color: #0366D4;
-	padding: 20px;
+	padding: 70px;
 	min-height: 400px;
 	min-width: 500px;
 	position: absolute;
@@ -71,4 +71,8 @@ h1{
 	padding: 10px;
 }
 
+#imagesDiv img {
+	height: 150px;
+	width: 250px;
+}
 

@@ -1,21 +1,27 @@
 // global variables //----------------fix these to be in quotes------------//
 var questions = {
-	"q1" : [ "What is the state capital of Alabama?","Montgomery", "Birmingham", "purple", "pink" ],
-	"q2" : ["What is the state capital of Alaska", "Juneau", "Anchorage", "oranges", "apricots"],
-	"q3" : ["What is the state capital of Arizona", "Phoenix", "dog"]
+	"q1" : [ "What is the state capital of Alabama?","Montgomery", "Birmingham", "Jefferson City", "Hartford"],
+	"q2" : ["What is the state capital of Alaska?", "Juneau", "Anchorage", "oranges", "apricots"],
+	"q3" : ["What is the state capital of Arizona?", "Phoenix", "dog"],
+	"q4" : ["What is the state capital of California?", "Los Angeles ", "Sacramento"],
+	"q5" : ["what is the state capital of Michigan?", "Detroit","Manchester","Lansing","Kansas City"]
 }
 
 var correctAnswer = {
 	"q1" : "Montgomery",
 	"q2" : "Juneau",
-	"q3" : "Phoenix"
+	"q3" : "Phoenix",
+	"q4" : "Sacramento",
+	"q5" : "Lansing"
 
 }
 
 var correspondingImages = {
-	"q1" : "../images/alabama.jpg",
-	"q2" : "../images/alaska.png",
-	"q3" : "../images/arizona.png"
+	"q1" : "assets/images/alabama.jpg",
+	"q2" : "assets/images/alaska.png",
+	"q3" : "assets/images/arizona.png",
+	"q4" : "assets/images/california.jpg",
+	"q5" : "assets/images/michigan.jpg"
 }
 
 var timer;
@@ -66,15 +72,15 @@ $(document).ready(function(){
 		//after question ends update section for few minutes then re-init
 		$("#answers").css("border-style", "none");
 		$("#answers").html("<div>" + isRight + "</div>" + "The Correct Answer is " + correctAnswer["q" + (questionAnswered)]);
-		var imageHTML = $("<div class = \"image\" + <img src =" + correspondingImages["q" + (questionAnswered)]+"> </div>");
-		imageHTML.appendTo("#answers");
 		clearInterval(interval);
 		clearTimeout(timer);
 		//hide all other components
 		$("#timer").hide();
 		$("#question").hide();
 		$(".headerSection").hide();
-		setTimeout(nextQuesiton, 10000);
+		$("#imagesDiv").html("<img src = \""+ correspondingImages["q" + (questionAnswered)] + "\">" )
+		$("#imagesDiv").show();
+		setTimeout(nextQuesiton, 3000);
 	}
 
 	//loads next quetion and resets 
@@ -92,6 +98,7 @@ $(document).ready(function(){
 			$("#answers").show();
 			$("#question").show();
 			$(".headerSection").show();
+			$("#imagesDiv").hide();
 			console.log(questionAnswered);
 			$("#question").html(questions["q" + questionAnswered][0]);
 			//clears out old answers
@@ -121,6 +128,7 @@ $(document).ready(function(){
 		$("#answers").hide();
 		$("#question").hide();
 		$(".headerSection").hide();
+		$("#imagesDiv").hide();
 		$(".mainsection").append("<div class = \"results\"> Questions Correct " + answersCorrect + "</div");
 		$(".mainsection").append("<div class = \"results\"> Questions Incorrect " + answersWrong + "</div");
 		$(".mainsection").append("<div class = \"results\"> Questions Blank " + answersBlank + "</div");
@@ -158,11 +166,11 @@ $(document).ready(function(){
 
 	//when player hovers over a question
 	$("section").on("mouseenter", ".choices" ,function(){
-		$(this).css("color","red");
+		$(this).css({"background-color":"orange", "border-style":"solid", "border-width":"2px"});
 	});
 	//when hover stops
 	$("section").on("mouseleave", ".choices" ,function(){
-		$(this).css("color","black");
+		$(this).css({"background-color":"#0366D4", "border-style":"none"});
 	});
 
 	//when player clicks on start over button
@@ -172,6 +180,7 @@ $(document).ready(function(){
 		$("#answers").show();
 		$("#question").show();
 		$(".headerSection").show();
+		$("#imagesDiv").hide();
 		//resets all variables 
 		questionAnswered = 1;
 		answersCorrect = 0;
