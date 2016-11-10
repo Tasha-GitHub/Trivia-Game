@@ -1,10 +1,11 @@
 // global variables //----------------fix these to be in quotes------------//
 var questions = {
-	"q1" : [ "What is the state capital of Alabama?","Montgomery", "Birmingham", "Jefferson City", "Hartford"],
-	"q2" : ["What is the state capital of Alaska?", "Juneau", "Anchorage", "oranges", "apricots"],
-	"q3" : ["What is the state capital of Arizona?", "Phoenix", "dog"],
-	"q4" : ["What is the state capital of California?", "Los Angeles ", "Sacramento"],
-	"q5" : ["what is the state capital of Michigan?", "Detroit","Manchester","Lansing","Kansas City"]
+	"q1" : ["What is the state capital of Alabama?","Montgomery", "Birmingham", "Jefferson City", "Hartford"],
+	"q2" : ["What is the state capital of Alaska?", "Juneau", "Anchorage", "Sitka", "Ketchikan"],
+	"q3" : ["What is the state capital of Arizona?", "Phoenix", "Bullhead City", "Glendale","Carefree"],
+	"q4" : ["What is the state capital of California?", "Los Angeles ", "Sacramento", "Atascadero", "Oakland"],
+	"q5" : ["What is the state capital of Michigan?", "Detroit","Manchester","Lansing","Kansas City"],
+	"q6" : ["What is the state capital of Ohio?", "Athens", "Bay Village", "Columbus", "Conneaut"]
 }
 
 var correctAnswer = {
@@ -12,7 +13,8 @@ var correctAnswer = {
 	"q2" : "Juneau",
 	"q3" : "Phoenix",
 	"q4" : "Sacramento",
-	"q5" : "Lansing"
+	"q5" : "Lansing",
+	"q6" : "Columbus"
 
 }
 
@@ -21,7 +23,8 @@ var correspondingImages = {
 	"q2" : "assets/images/alaska.png",
 	"q3" : "assets/images/arizona.png",
 	"q4" : "assets/images/california.jpg",
-	"q5" : "assets/images/michigan.jpg"
+	"q5" : "assets/images/michigan.jpg",
+	"q6" : "assets/images/ohio.png"
 }
 
 var timer;
@@ -71,7 +74,7 @@ $(document).ready(function(){
 
 		//after question ends update section for few minutes then re-init
 		$("#answers").css("border-style", "none");
-		$("#answers").html("<div>" + isRight + "</div>" + "The Correct Answer is " + correctAnswer["q" + (questionAnswered)]);
+		$("#answers").html("<div>" + isRight + "</div>" + "<div> The Correct Answer is " + correctAnswer["q" + (questionAnswered)]+"</div>");
 		clearInterval(interval);
 		clearTimeout(timer);
 		//hide all other components
@@ -167,11 +170,11 @@ $(document).ready(function(){
 
 	//when player hovers over a question
 	$("section").on("mouseenter", ".choices" ,function(){
-		$(this).css({"background-color":"orange", "border-style":"solid", "border-width":"2px"});
+		$(this).css({"background-color":"#03658C", "border-style":"solid", "border-width":"2px"});
 	});
 	//when hover stops
 	$("section").on("mouseleave", ".choices" ,function(){
-		$(this).css({"background-color":"#0366D4", "border-style":"none"});
+		$(this).css({"background-color":"#012340", "border-style":"none"});
 	});
 
 	//when player clicks on start over button
@@ -202,7 +205,7 @@ $(document).ready(function(){
 
 	function timeUp(){
 		answersBlank++;
-		isRight = "Time Up!"
+		isRight = "Times Up!"
 		cutScene();
 	}
 

@@ -1,4 +1,4 @@
-/* stickey footer*/
+/* ---------------stickey footer--------------------*/
 
 html {
   height: 100%;
@@ -7,10 +7,8 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  background-image: url(../images/backgroud.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
   position: relative;
+  background-color: #A60A0A;
 
 
 }
@@ -26,79 +24,109 @@ body {
   flex: 1;
 }
 
-/*---------------*/
+/*------------------ Div Styling ---------------------*/
+
+#answers{
+  width: 250px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
 
 .mainsection{
-	background-color: #0366D4;
+	background-color: #012340;
 	padding: 70px;
 	min-height: 400px;
 	min-width: 500px;
 	position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    font-size: 20px;
-    border-color: white;
-    border-style: solid;
-    border-width: 3px;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 20px;
+  border-color: white;
+  border-style: solid;
+  border-width: 3px;
+  color: white;
 
 
 }
+
+/*--------Button Styling and Centering----------*/
 
 .buttonDiv{
 	position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 }
 
-button{
+button {
 	position: absolute;
 	height: 50px;
-	width: 100px;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
+	width: 150px;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background-color: #03658C !important;
+  font-size: 19px !important;
+  border-radius: 3px !important;
 
 
 }
 
 
+button : hover {
+  background-color: #03658C !important;
+}
+
+/*--------Image Styling and Centering----------------*/
+
+
+#imagesDiv img {
+  height: 150px;
+  width: 250px;
+}
+
+
+#imagesDiv  {
+  width: 250px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  margin-top: 10px;
+}
+
+
+
+/*--------Text Styling----------------------------------*/
 h1{
 	text-align: center;
 	color: white;
 	font-size: 50px;
-	background-color: gray;
+	background-color: #012340;
 	border-width: 2px;
 	border-style: solid;
 	padding: 10px;
+  font-family: 'Diplomata SC', cursive;
+  margin-top: 40px;
 }
 
-#imagesDiv img {
-	height: 150px;
-	width: 250px;
+p {
+  color:white;
+
 }
 
-#answers{
-	width: 250px;
-	position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
 
-#imagesDiv  {
-	width: 250px;
-	position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
+
+
+
