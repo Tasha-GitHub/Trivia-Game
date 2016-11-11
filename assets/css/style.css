@@ -41,7 +41,7 @@ body {
 	background-color: #012340;
 	padding: 70px;
 	height: 400px;
-	width: 900px;
+  margin-top: 30px;
 	position: absolute;
   top: 50%;
   left: 50%;
@@ -129,7 +129,7 @@ h1{
 	padding: 10px;
   font-family: 'Diplomata SC', cursive;
   margin-top: 40px;
-  
+
 }
 
 p {
@@ -138,5 +138,47 @@ p {
 
 }
 
+/*=====================================================
+=            Bootstrap 2.3.2 Media Queries            =
+=====================================================*/
 
+@media only screen and (max-width : 767px) {
+  h1{
+    font-size: 40px;
+  }
+
+@media only screen and (max-width : 480px) {
+  h1{
+  font-size: 30px;
+  padding: 10px;
+  margin-top: 40px;
+
+  }
+
+  .mainsection{
+    padding: 30px 0px 0px 0px;
+    height: 400px;
+    margin-top: 30px;
+    font-size: 20px;
+  }
+  
+}
+
+@media only screen and (max-width : 320px) {
+  h1{
+    font-size: 20px;
+    padding: 10px;
+    margin-top: 40px;
+  }
+
+  .mainsection{
+    background-color: #012340;
+    padding: 40px 0px 0px 0px;
+    height: 400px;
+    margin-top: 0px;
+    font-size: 16px;
+
+  }
+
+}
 
