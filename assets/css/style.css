@@ -8,7 +8,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  background-color: #A60A0A;
+  background-color: #8C1C25;
 
 
 }
@@ -121,9 +121,9 @@ button {
 /*--------Text Styling----------------------------------*/
 h1{
 	text-align: center;
-	color: white;
+	color: black;
 	font-size: 50px;
-	background-color: #012340;
+	background-color: #F2F2F2;
 	border-width: 2px;
 	border-style: solid none solid none;
 	padding: 10px;
@@ -133,7 +133,7 @@ h1{
 }
 
 p {
-  color:white;
+  color:#ffffff;
   text-align: center;
 
 }
